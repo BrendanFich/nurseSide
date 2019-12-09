@@ -6,7 +6,7 @@
         <div class="inHospitalNo">住院号：33215</div>
       </div>
       <div class="avatar"></div>
-      <router-link tag="div" to='/index/dynamicMonitor' class="btn">
+      <router-link tag="div" to="/index/dynamicMonitor" class="btn">
         <i class="icon-monitor"></i>
         <span class="btnText">动态监控</span>
       </router-link>
@@ -18,57 +18,73 @@
     <div class="right">
       <div class="title">广东省中西结合医院——骨外科</div>
       <div class="main">
-        <div class="baseInfo">
-          <div class="item">
-            <label>病患</label>
-            <span class="value">： 杨洋</span>
-          </div>
-          <div class="item">
-            <label>性别</label>
-            <span class="value">： 男</span>
-          </div>
-          <div class="item">
-            <label>入院日期</label>
-            <span class="value">： 2019.02.23</span>
-          </div>
-          <div class="item">
-            <label>年龄</label>
-            <span class="value">： 21</span>
-          </div>
-          <div class="item">
-            <label>护理等级</label>
-            <span class="value">： 二级</span>
-          </div>
-          <div class="item">
-            <label>性质</label>
-            <span class="value">： 医保</span>
-          </div>
-          <div class="item">
-            <label>诊断</label>
-            <span class="value">： 小腿骨折</span>
-          </div>
-          <div class="item">
-            <label>主治医师</label>
-            <span class="value">： 陈教授</span>
-          </div>
-          <div class="item">
-            <label>科室</label>
-            <span class="value">： 骨外科</span>
-          </div>
-        </div>
-        <ul class="nav">
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <label>病患</label>
+                <span class="value">： 杨洋</span>
+              </td>
+              <td>
+                <label>性别</label>
+                <span class="value">： 男</span>
+              </td>
+              <td>
+                <label>入院日期</label>
+                <span class="value">： 2019.02.23</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label>年龄</label>
+                <span class="value">： 21</span>
+              </td>
+              <td>
+                <label>护理等级</label>
+                <span class="value">： 二级</span>
+              </td>
+              <td>
+                <label>性质</label>
+                <span class="value">： 医保</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label>诊断</label>
+                <span class="value">： 小腿骨折</span>
+              </td>
+              <td>
+                <label>主治医师</label>
+                <span class="value">： 陈教授</span>
+              </td>
+              <td>
+                <label>科室</label>
+                <span class="value">： 骨外科</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label>患者状态</label>
+                <span class="value">： 躺床</span>
+              </td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="nav">
           <router-link
             :to="item.path"
             v-for="(item, index) in nav"
             :key="index"
-            tag="li"
+            tag="el-button"
             class="navBtn"
             @click.native="isShowMenu = false"
           >
             <i :class="item.icon"></i>
             <p>{{item.text}}</p>
           </router-link>
-        </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -81,48 +97,48 @@ export default {
     return {
       nav: [
         {
-          path: '/index/caseInquiry',
-          icon: 'icon-record',
-          text: '病例查询'
+          path: '/index/docOrderRun',
+          icon: 'icon-implement',
+          text: '医嘱执行'
         },
         {
-          path: '/index/medicalTechInquiry',
-          icon: 'icon-medical-tech',
-          text: '医技查询'
+          path: '/index/infusionPatrol',
+          icon: 'icon-patrol',
+          text: '输液巡视'
         },
         {
-          path: '/index/voiceRecord',
-          icon: 'icon-sound',
-          text: '录音查询'
+          path: '/index/signsInput',
+          icon: 'icon-input',
+          text: '体征录入'
         },
         {
-          path: '/index/feeInquiry',
-          icon: 'icon-fee',
-          text: '费用查询'
+          path: '/index/voiceInput',
+          icon: 'icon-voice',
+          text: '语音录入'
         },
         {
-          path: '/index/docOrderInquiry',
+          path: '/index/docOrderCheck',
           icon: 'icon-advice',
-          text: '医嘱查询'
+          text: '医嘱核对'
         },
         {
-          path: '/index/signsInquiry',
-          icon: 'icon-sign',
-          text: '体征查询'
+          path: '/index/visitManagement',
+          icon: 'icon-visit',
+          text: '探视管理'
         },
         {
           path: '/index/patientSide',
+          icon: 'icon-doctor',
+          text: '医生端'
+        },
+        {
+          path: '/index/nurseSide',
           icon: 'icon-patient',
           text: '患者端'
         },
         {
-          path: '/index/nurseSide',
-          icon: 'icon-nurse',
-          text: '护士端'
-        },
-        {
           path: '/index/careWorkerSide',
-          icon: 'icon-worker',
+          icon: 'icon-nurse',
           text: '护工端'
         }
       ]
@@ -220,31 +236,27 @@ export default {
       border-radius: 15px 15px 0 0
       @include font(32px, 500, $color-word-black)
     .main
-      padding: 44px 40px
-      .baseInfo
+      padding: 30px 40px
+      table
         background-color: rgba(255,255,255,0.55)
+        border-collapse: collapse
         border: 1px solid $color-border-blue
-        border-bottom: none
-        display: flex
-        justify-content: space-between
-        align-items: center
-        flex-wrap: wrap
-        .item
-          width: 422.5px
-          height: 80px
+        tr
           border-bottom: 1px solid $color-border-blue
-          label
-            display: inline-block
-            width: 120px
-            padding-left: 40px
-            line-height: 80px
-            @include font(28px, 500, $color-word-black)
-          .value
-            line-height: 80px
-            @include font(28px, 500, $color-word-blue)
+          td
+            width: 455px
+            height: 80px
+            label
+              display: inline-block
+              width: 120px
+              padding-left: 40px
+              @include font(28px, 500, $color-word-black)
+            .value
+              @include font(28px, 500, $color-word-blue)
       .nav
         float: left
         padding: 0
+        margin-top: 20px
         .navBtn
           margin: 12px 19px
           float: left
@@ -264,6 +276,7 @@ export default {
           p
             margin: 0
           i
+            display: inline-block
             @include font(40px, 800, $color-word-blue)
-            margin-bottom: 10px
+            margin-bottom: 15px
 </style>

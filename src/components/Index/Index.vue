@@ -22,19 +22,20 @@
         <div class="mask" v-show="isShowMenu" @click="show($event)">
           <div class="content" ref="msk">
             <div class="mian">
-              <ul class="nav">
+              <div class="nav">
                 <router-link
                   :to="item.path"
                   v-for="(item, index) in nav"
                   :key="index"
-                  tag="li"
+                  tag="el-button"
                   class="navBtn"
+                  :class="{active: $route.path.includes(item.path)}"
                   @click.native="isShowMenu = false"
                 >
                   <i :class="item.icon"></i>
                   <p>{{item.text}}</p>
                 </router-link>
-              </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -54,48 +55,48 @@ export default {
       isShowMenu: false,
       nav: [
         {
-          path: '/index/caseInquiry',
-          icon: 'icon-record',
+          path: '/index/docOrderRun',
+          icon: 'icon-implement',
           text: '医嘱执行'
         },
         {
-          path: '/index/medicalTechInquiry',
-          icon: 'icon-medical-tech',
+          path: '/index/infusionPatrol',
+          icon: 'icon-patrol',
           text: '输液巡视'
         },
         {
-          path: '/index/voiceRecord',
-          icon: 'icon-sound',
+          path: '/index/signsInput',
+          icon: 'icon-input',
           text: '体征录入'
         },
         {
-          path: '/index/feeInquiry',
-          icon: 'icon-fee',
+          path: '/index/voiceInput',
+          icon: 'icon-voice',
           text: '语音录入'
         },
         {
-          path: '/index/docOrderInquiry',
+          path: '/index/docOrderCheck',
           icon: 'icon-advice',
           text: '医嘱核对'
         },
         {
-          path: '/index/signsInquiry',
-          icon: 'icon-sign',
+          path: '/index/visitManagement',
+          icon: 'icon-visit',
           text: '探视管理'
         },
         {
           path: '/index/patientSide',
-          icon: 'icon-patient',
+          icon: 'icon-doctor',
           text: '医生端'
         },
         {
           path: '/index/nurseSide',
-          icon: 'icon-nurse',
+          icon: 'icon-patient',
           text: '患者端'
         },
         {
           path: '/index/careWorkerSide',
-          icon: 'icon-worker',
+          icon: 'icon-nurse',
           text: '护工端'
         }
       ]
@@ -259,8 +260,15 @@ export default {
                 p
                   margin: 0
                 i
+                  display: inline-block
                   @include font(40px, 800, $color-word-blue)
-                  margin-bottom: 10px
+                  margin-bottom: 15px
+              .active
+                color: $color-white
+                background: $color-word-blue
+                border-color: $color-word-blue
+                i
+                  color: $color-white
       .menuBtn
         width: 86px
         height: 86px
