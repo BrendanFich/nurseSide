@@ -1,13 +1,13 @@
 <template>
   <div class="index">
     <div class="top">
-      <div class="status" v-if="$route.path.includes('patientInfo')">· 住院中</div>
-      <div class="balance" v-if="$route.path.includes('patientInfo')">
+      <div class="status" v-if="$route.path.indexOf('patientInfo') !== -1">· 住院中</div>
+      <div class="balance" v-if="$route.path.indexOf('patientInfo') !== -1">
         <i class="icon-balance"></i>余额：
         <span>￥2000.00</span>
       </div>
       <div class="pageTitle" v-for="(item, index) in nav" :key="index">
-        <span v-if="$route.path.includes(item.path)">{{item.text}}</span>
+        <span v-if="$route.path.indexOf(item.path) !== -1">{{item.text}}</span>
       </div>
       <div class="time">
         <div class="clock">08:23:50</div>
@@ -29,7 +29,7 @@
                   :key="index"
                   tag="el-button"
                   class="navBtn"
-                  :class="{active: $route.path.includes(item.path)}"
+                  :class="{active: $route.path.indexOf(item.path) !== -1}"
                   @click.native="isShowMenu = false"
                 >
                   <i :class="item.icon"></i>
