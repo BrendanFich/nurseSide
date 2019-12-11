@@ -261,7 +261,7 @@ export default {
                   margin: 0
                 i
                   display: inline-block
-                  @include font(40px, 800, $color-word-blue)
+                  @include font(40px, 400, $color-word-blue)
                   margin-bottom: 15px
               .active
                 color: $color-white
